@@ -1,0 +1,42 @@
+Trazado aproximado de las líneas de Metro.
+		
+L1: Pinar de Chamartín - Valdecarros
+L2: La Elipa - Cuatro Caminos
+L3: Villaverde Alto - Moncloa
+L4: Argüelles - Pinar de Chamartín
+L5: Alameda de Osuna - Casa de Campo
+L6: Circular
+L7: Las Musas - Pitis
+L8: Nuevos Ministerios - Aeropuerto
+L9: Herrera Oria - Arganda Rey
+L10: Fuencarral - Puerta del Sur
+L11: Plaza Elíptica - La Peseta
+L12: Metrosur
+Transbordo
+Ramal
+ML-1: Pinar de Chamartín - Las Tablas
+ML-2: Colonia Jardín - Estación de Aravaca
+ML-3: Colonia Jardín - Puerta de Boadilla
+Tranvía de Parla
+
+
+Metro de Madrid. http://www.metromadrid.es/es/index.html
+MINTRA  http://www.madrid.org/cs/Satellite?idConsejeria=1109266187248&idListConsj=1109265444710&c=CM_Agrupador_FP&pagename=ComunidadMadrid%2FEstructura&idOrganismo=1109266228020&pid=1109265444699&language=es&cid=1109266187248
+
+Fuente:
+Consorcio de Transportes de Madrid
+Consejería de Transportes e Infraestructuras
+Comunidad de Madrid
+
+Fecha:
+Última actualización: marzo de 2011
+
+Digitalizado  por el Instituto de Estadística de la Comunidad de Madrid.
+
+
+
+
+Aviso legal:
+El Instituto de Estadística de la Comunidad de Madrid no se responsabiliza de las omisiones, imprecisiones o errores que pudiesen producirse en algún momento en la cartografía y los datos aquí facilitados, ni de las consecuencias que puedan originarse por su utilización. La información que se ofrece por este medio se hace únicamente a título informativo, reservándose el Instituto de Estadística el derecho de suspender su difusión total o parcialmente, y de modificar la estructura y contenido de esta aplicación sin aviso previo.
+El Instituto de Estadística no se responsabiliza de cualquier daño o perjuicio en el software o hardware del usuario que pudiera derivarse del acceso a esta aplicación o del uso de información aquí contenida.
+El Instituto de Estadística facilita la consulta libre y gratuita de esta información, incluyendo la realización de copias en papel, ficheros u otros dispositivos de almacenamiento para usos internos. También se permite la copia y distribución de páginas y mapas siempre que se cite la fuente, no se manipulen ni alteren los contenidos y no se utilicen directamente con fines comerciales. 
