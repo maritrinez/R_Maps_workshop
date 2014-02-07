@@ -1,5 +1,5 @@
 R Maps workshop
-________________
+_______________
 
 Documentation used for the workshop "Maps with R" at the Madrid R Users group in october 2013.
 
