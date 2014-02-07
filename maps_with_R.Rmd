@@ -3,14 +3,15 @@ Demo R maps
 Code for the workshop 'Maps with R' for the R Users Meeting Madrid.
 
 ```{r options, include=FALSE}
-opts_chunk$set(warning = FALSE, error=TRUE, message=TRUE, tidy=TRUE, fig.width=7, fig.height=7)
+opts_chunk$set(warning = FALSE, error=FALSE, message=FALSE, tidy=TRUE)
 ```
 
 ```{r setwd}
 setwd("~/Dropbox/Maps_with_R/")
 ```
 
-1. Read shapefiles into R and plot some meaningful data
+
+## 1. Read shapefiles into R and plot some meaningful data
 
 > Load a Shapefile into R  (downladed from [madrid.org](http://www.madrid.org/nomecalles/DescargaBDTCorte.icm))         
 
@@ -114,9 +115,8 @@ rm(barriosNamesCodes)
 ```
 
 #### PLOT THE DATA
-```{r plot_data fig.width=8, fig.height=7}
+```{r plot_data}
 plot(barriosMadrid, col = barriosMadrid$Densidad)
-
 
 # SP library
 library(RColorBrewer)
@@ -124,18 +124,20 @@ colors <- colorRampPalette(brewer.pal(9, "YlGnBu"))(16)
 spplot(barriosMadrid, "Densidad", col.regions = colors)
 
 
-# CLASS INT library
-if (!"classInt" %in% installed.packages()) install.packages("classInt")
-library(classInt)
+# Customized colors using the `plot` function
 
-int <- classIntervals(barriosMadrid$Densidad, 10, style = "pretty")
-int
+# Cut the variable into breaks and assign a color to every interval.
+cut <- cut(barriosMadrid$Densidad,breaks=c(0,25,50,75,100,150,200,250,300,350,500))
+barriosMadrid$cut <- cut
+
 colors <- colorRampPalette(brewer.pal(9, "YlGnBu"))(10)
-barriosMadrid$colors <- findColours(int, colors)
+cutColors <- cut(barriosMadrid$Densidad,breaks=c(0,25,50,75,100,150,200,250,300,350,500), labels = colors)
+barriosMadrid$colors <- cutColors
+
 head(barriosMadrid@data)
 
-plot(barriosMadrid, col = barriosMadrid$colors)
-legend("bottomleft", cex = .7, legend = leglabs(int$brks), fill = colors, title = "Population density Madrid (2013)")
+plot(barriosMadrid, col = as.character(barriosMadrid@data$colors))
+legend("bottomleft", cex = .7, legend = levels(barriosMadrid$cut), fill = colors, title = "Population density Madrid (2013)")
 ```
 
 #### PLOT THE NEIGHBORHOOD LABELS
@@ -145,14 +147,14 @@ length(coordinates(barriosMadrid))
 
 cents <- coordinates(barriosMadrid)
 
-pointLabel(cents[ ,1], cents[ ,2], labels=barriosMadrid$Barrio)
+#pointLabel(cents[ ,1], cents[ ,2], labels=barriosMadrid$Barrio)
 
-png("labels.png", width = 2500, height = 2100)
-plot(barriosMadrid, col = barriosMadrid$colors)
-legend("bottomleft", cex = .9, legend = leglabs(int$brks), fill = colors, title = "Population density Madrid (2013)")
+#png("labels.png", width = 2500, height = 2100)
+plot(barriosMadrid, col = as.character(barriosMadrid@data$colors))
 plot(parquesMadrid, pch = 20, cex = 4, col = "springgreen3", add = TRUE)
 pointLabel(cents[ ,1], cents[ ,2], labels=barriosMadrid$Barrio)
-dev.off()
+legend("bottomleft", cex = .9, legend = levels(barriosMadrid$cut), fill = colors, title = "Population density Madrid (2013)")
+#dev.off()
 ```
 
 #### PLOT DENSITY AS POINTS
@@ -178,7 +180,7 @@ plot(metroLines, col = "turquoise3", lwd = 2, add = TRUE)
 ```
 
 
-2. Plot a map on a street map. 
+## 2. Plot a map on a street map. 
 
 ### GGMAP AND GGPLOT LIBRARIES (also rgdal and rgeos)
 
@@ -257,7 +259,7 @@ MadridMap +
 ```
 
 
-3. Plot a map with ggplot without a background street map. 
+## 3. Plot a map with ggplot without a background street map. 
 ```{r}
 ggplot() + geom_polygon(aes(x=long, y=lat, group = group, fill = Densidad), data = dataBarrios) + 
 	scale_fill_gradient(low="grey90", high="black", limits=c(0,500)) +
@@ -270,7 +272,7 @@ ggplot() + geom_polygon(aes(x=long, y=lat, group = group, fill = Densidad), data
   	  text = element_blank())
 ```
 
-4. googleVis
+## 4. googleVis
 ```{r}
 library(googleVis)
 emigrantes <- read.csv("Data/emigrantes.csv", sep = ";")
